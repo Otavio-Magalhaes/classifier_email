@@ -22,9 +22,10 @@ def preprocessar_texto(texto):
     """Pré-processa o texto removendo stopwords e aplicando lematização."""
     idioma = detectar_idioma(texto)
     nlp = MODELOS[idioma]
+    print(f'texto lido cru: {texto}')
 
     doc = nlp(texto)
-
+    print(f'docmento processado nlp: {doc}')
     tokens_processados = [
         token.lemma_.lower()
         for token in doc
@@ -32,4 +33,6 @@ def preprocessar_texto(texto):
     ]
 
     texto_processado = ' '.join(tokens_processados)
+    print(f'texto processado final: {texto_processado}')
+
     return texto_processado, idioma

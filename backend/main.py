@@ -2,10 +2,12 @@ from email_reader import ler_email
 from text_preprocessor import preprocessar_texto
 from email_classifier import classificar_email
 from auto_responder import gerar_resposta
-
+from huggingface_hub import login
+from dotenv import load_dotenv
+import os
 def main():
     try:
-        texto_email = ler_email(texto_manual="Olá, gostaria de solicitar um orçamento para 5 produtos. Aguardo seu retorno.")
+        texto_email = ler_email(input_path="documento.pdf")
         texto_processado, idioma = preprocessar_texto(texto_email)
 
         print(f"\nIdioma detectado: {idioma}")
