@@ -5,18 +5,15 @@ type MessageResult = {
   resposta: any;  
 };
 
-type ChatMessageProps = {
-  message: {
+export type Message = {
+    id: number; 
     email: string;
     file?: File | null;
     result?: MessageResult | null;
     status: "loading" | "done" | "error";
-  };
 };
 
-export const ChatMessage: FC<ChatMessageProps> = ({ message }) => {
-  const { email, file, result, status } = message;
-
+export const ChatMessage: FC<Message> = ({ email, file, result, status }) => {
   const displayText = file ? file.name : email;
 
   const isProductive = (classificacao: string) =>
