@@ -42,15 +42,15 @@ export const ChatPage = () => {
   };
 
   return (
-    <div className="flex bg-background-page justify-center min-h-screen">
+    <div className="flex bg-background-page min-h-screen">
       <Sidebar />
-      <main className="flex-1 flex flex-col items-center p-6">
-        <div className="w-full max-w-3xl flex flex-col space-y-4 mb-4">
+      <main className="flex-1 flex flex-col items-center">
+        <div className="w-full max-w-3xl flex flex-col flex-1 overflow-auto p-6 space-y-4">
           {messages.map((msg) => (
             <ChatMessage key={msg.id} message={msg} />
           ))}
         </div>
-        <div className="w-full max-w-3xl">
+        <div className="w-full max-w-3xl p-4 border-t border-border bg-background-page sticky bottom-0">
           <ChatInput onSendMessage={handleSendMessage} />
         </div>
       </main>

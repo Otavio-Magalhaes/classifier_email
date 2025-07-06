@@ -49,7 +49,7 @@ export const ChatInput = ({ onSendMessage }: ChatInputProps) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center bg-background-page  justify-center">
+    <div className=" flex items-center bg-background-page  justify-center">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="max-w-xl w-full flex flex-col  bg-background rounded-xl p-4 relative space-y-4"
