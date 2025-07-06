@@ -26,7 +26,7 @@ def gerar_resposta(texto_email, categoria, idioma):
             }
         ],
     )
-    resposta = completion.choices[0].message
+    resposta = completion.choices[0].message.content
 
 
 
