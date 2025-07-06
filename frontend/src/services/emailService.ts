@@ -6,7 +6,7 @@ export async function processarEmail(message: string, file?: File) {
       formData.append("arquivo", file);
     }
 
-    const response = await fetch('http://127.0.0.1:8000/api/v1/processar-email', {
+    const response = await fetch('https://classifier-email.onrender.com/api/v1/processar-email', {
       method: 'POST',
       body: formData,
     });
