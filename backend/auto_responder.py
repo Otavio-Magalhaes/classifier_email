@@ -2,7 +2,7 @@ import os
 from huggingface_hub import InferenceClient
 
 def gerar_resposta(texto_email, categoria, idioma):
-    if categoria != 'Produtivo':
+    if categoria != 'Produtivo' and categoria != "Productive":
        return gerar_resposta_nao_produtiva(idioma)
 
     client = InferenceClient(
@@ -10,7 +10,7 @@ def gerar_resposta(texto_email, categoria, idioma):
         api_key=os.getenv("HF_TOKEN")
     )
     prompt =  f"""
-            Gere uma resposta curta, profissional em {'português' if idioma == 'pt' else 'inglês'} para o e-mail abaixo.
+            Gere uma resposta curta, profissional em {'português' if idioma == 'pt' else 'en'} para o e-mail abaixo.
             Não inclua o texto original, apenas a resposta.
             
             E-mail: {texto_email}

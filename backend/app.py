@@ -40,7 +40,7 @@ async def processar_email(
         categoria = resultado['labels'][0]
         score = resultado['scores'][0]
         resposta = gerar_resposta(texto_email, categoria, idioma)
-
+        print(f'Gerou resposata: {resposta}')
         return {
             "idioma": idioma,
             "classificacao": categoria,

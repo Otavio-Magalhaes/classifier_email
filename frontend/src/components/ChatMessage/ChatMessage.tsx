@@ -19,13 +19,16 @@ export const ChatMessage: FC<ChatMessageProps> = ({ message }) => {
 
   const displayText = file ? file.name : email;
 
+  const isProductive = (classificacao: string) =>
+    classificacao === "Produtivo" || classificacao === "Productive";
+
   const getClassificacaoClass = (classificacao: string) =>
-    classificacao === "Produtivo" ? "text-green-500" : "text-red-500";
+    isProductive(classificacao) ? "text-green-500" : "text-red-500";
 
   return (
     <div className="space-y-4">
       <div className="flex justify-end">
-        <div className="bg-blue-500 text-end text-white p-3 rounded-lg ">
+        <div className="bg-blue-500 text-end text-white p-3 rounded-lg">
           <p className="text-sm">
             <strong>Você:</strong> {displayText}
           </p>
@@ -37,6 +40,7 @@ export const ChatMessage: FC<ChatMessageProps> = ({ message }) => {
           {status === "loading" && (
             <p className="text-yellow-500 animate-pulse">Aguardando resposta...</p>
           )}
+
           {status === "done" && result && (
             <>
               <p className={getClassificacaoClass(result.classificacao)}>
@@ -44,12 +48,13 @@ export const ChatMessage: FC<ChatMessageProps> = ({ message }) => {
               </p>
               <p className="mt-2">
                 <strong>Resposta Sugerida:</strong>{" "}
-                {result.classificacao === "Produtivo"
+                {isProductive(result.classificacao)
                   ? result.resposta?.content || result.resposta
                   : result.resposta}
               </p>
             </>
           )}
+
           {status === "error" && (
             <p className="text-red-500">Erro ao processar o email.</p>
           )}

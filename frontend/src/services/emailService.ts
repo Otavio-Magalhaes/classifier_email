@@ -1,7 +1,7 @@
-export async function processarEmail(email: string, file?: File) {
+export async function processarEmail(message: string, file?: File) {
   try {
     const formData = new FormData();
-    formData.append("email", email);
+    formData.append("email", message);
     if (file) {
       formData.append("arquivo", file);
     }
@@ -22,10 +22,3 @@ export async function processarEmail(email: string, file?: File) {
   }
 }
 
-export async function buscarEmailsSalvos() {
-  const response = await fetch('http://127.0.0.1:8000/emails');
-  if (!response.ok) {
-    throw new Error('Erro ao buscar emails salvos');
-  }
-  return await response.json();
-}
