@@ -2,3 +2,8 @@ fastapi
 uvicorn
 transformers
 huggingface_hub
+pdfplumber
+os
+io
+langdetect
+spacy
