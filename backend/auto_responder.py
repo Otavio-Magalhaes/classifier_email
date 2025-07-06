@@ -10,9 +10,9 @@ def gerar_resposta(texto_email, categoria, idioma):
         api_key=os.getenv("HF_TOKEN")
     )
     prompt =  f"""
-            Gere uma resposta curta, profissional em {'português' if idioma == 'pt' else 'en'} para o e-mail abaixo.
+            Gere uma resposta em formato de email, profissional em {'português' if idioma == 'pt' else 'en'} para o e-mail abaixo.
             Não inclua o texto original, apenas a resposta.
-            
+            Gere uma Categoria para o email recebido.
             E-mail: {texto_email}
             
             Resposta: 

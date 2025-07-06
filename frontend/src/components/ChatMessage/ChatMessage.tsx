@@ -25,9 +25,9 @@ export const ChatMessage: FC<Message> = ({ email, file, result, status }) => {
   return (
     <div className="space-y-4">
       <div className="flex justify-end">
-        <div className="bg-blue-500 text-end text-white p-3 rounded-lg">
-          <p className="text-sm">
-            <strong>Você:</strong> {displayText}
+        <div className="bg-blue-500 text-end text-white max-w-sm p-3 rounded-lg">
+          <p className="text-sm whitespace-pre-wrap">
+            {displayText}
           </p>
         </div>
       </div>
@@ -40,15 +40,15 @@ export const ChatMessage: FC<Message> = ({ email, file, result, status }) => {
 
           {status === "done" && result && (
             <>
-              <p className={getClassificacaoClass(result.classificacao)}>
+              <div className={getClassificacaoClass(result.classificacao)}>
                 <strong>Classificação:</strong> {result.classificacao}
-              </p>
-              <p className="mt-2">
+              </div>
+              <div className="mt-2 whitespace-pre-wrap">
                 <strong>Resposta Sugerida:</strong>{" "}
                 {isProductive(result.classificacao)
                   ? result.resposta?.content || result.resposta
                   : result.resposta}
-              </p>
+              </div>
             </>
           )}
 
