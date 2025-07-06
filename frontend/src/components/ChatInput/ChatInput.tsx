@@ -4,29 +4,32 @@ import { AiOutlinePaperClip, } from "react-icons/ai";
 import brain from "../../assets/brain.png";
 import { useState } from "react";
 import { FilePreview } from "../FilePreview/FilePreview";
-import { processarEmail } from "../../services/emailService";
 
 type FormData = {
   message: string;
   file: File[];
 };
+type ChatInputProps = {
+  onSendMessage: (message: string, file?: File) => void;
+};
 
-export const ChatInput = () => {
+export const ChatInput = ({ onSendMessage }: ChatInputProps) => {
   const { register, handleSubmit, reset, watch, setValue } = useForm<FormData>();
   const messageValue = watch("message", "");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   const onSubmit = async (data: FormData) => {
     const file = data.file?.[0];
-    const message = data.message
+    const message = data.message;
+
     if (!file && !message) {
       console.error("Selecione um arquivo ou digite o email.");
       return;
     }
-    const response = processarEmail(message, file)
+
+    onSendMessage(message, file);  
     reset();
     setSelectedFile(null);
-    return response
   };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {

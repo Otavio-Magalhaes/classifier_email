@@ -10,7 +10,7 @@ export const Sidebar: FC = () => {
       </button>
       <div className="flex flex-col space-y-2">
         {/* lembrar que preciso criar a interacao, se vou fazer com persistencia no Banco ou em localstorage */}
-        {["Email.1", "Email.2", "Email.1"].map((item) => (
+        {["Email.1", "Email.2", "Email.3"].map((item) => (
           <button key={item} className="text-left text-text hover:bg-primary/10 rounded p-2 cursor-pointer">
             {item}
           </button>
