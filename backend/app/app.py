@@ -7,7 +7,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://email-classifier-acsz.onrender.com/"],
+    allow_origins=["https://email-classifier-acsz.onrender.com"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
